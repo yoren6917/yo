@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>soundBoard</title>
+        <style>
+            body{
+                margin: 0;
+                display: flex;
+                padding: 24px;
+                justify-content: center;
+                
+            }
+            .contener{
+                width: 100%;
+                padding: 20px 24px;
+                max-width: 900px;
+            }
+            .tomol{
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <audio src="vineboom.mp3" id="sound1"></audio>
+        <audio src="getout.mp3" id="sound2"></audio>
+        <main class="contener">
+            <div class="tomol">
+                <button onclick="playSound('sound1')" style="box-shadow: 0px 3px 3px;">Vine Boom</button>
+                <button onclick="playSound('sound2')" style="box-shadow: 0px 3px 3px;">Get Out</button>
+            </div>
+        </main>
+        <script>
+            function playSound(id){
+                const soundd = document.querySelectorAll("audio");
+                soundd.forEach(sound => {
+                    sound.pause();
+                    sound.currentTime = 0;
+                })
+                const audiod = document.getElementById(id);
+                audiod.currentTime = 0;
+                audiod.play();
+            }
+            document.getElementById("fom").addEventListener("submit", function(e) {
+                let passw = document.getElementById("pepa").value;
+                let repass = document.getElementById("repa").value;
+
+                if (repass != passw){
+                    alert("Password tidak sama");
+                    e.preventDefault();
+                }
+            });
+        </script>
+    </body>
+</html>

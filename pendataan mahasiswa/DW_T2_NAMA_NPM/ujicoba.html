@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Uji nyoba</title>
+        <style>
+            body{
+                margin: 0px;
+                padding: 0px;
+            }
+            li{
+                color: white;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            a{
+                text-decoration: none;
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1 style="text-align: center;">Belajar HTML dasar</h1>
+            <nav style="background-color:orange;">
+                <ul style="list-style: none; display: flex; gap: 10px; justify-content: center; padding: 0; color: white;">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div style="display: flex; justify-content: end;">
+            <table cellspacing="9" border="2"> <!-- cell spacing untuk melebarkan frame-->
+                <tr>
+                    <td>nama</td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <table cellpadding="9" border="1"> <!-- cell padding untuk melebarkan isi--> <!-- border menentukan jenis frame-->
+                <tr>
+                    <td>nama</td>
+                </tr>
+            </table>
+        </div>
+        <div style="justify-content: center; display: flex;">
+            <table border="1" >
+                <tr border="1">
+                    <td colspan="4"">nama</td>
+                </tr>
+                <tr>
+                    <td rowspan="">npm</td>
+                    <td>npm</td>
+                    <td>npm</td>
+                    <td>npm</td>
+                </tr>
+            </table>
+        </div>
+        <div style="text-align: center; width: 100%; margin-top: 100px;">
+            <audio controls autoplay>
+                <source src="Muhahaha.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+        <div style="text-align: center; margin-top: 100px;">
+            <video width="320" controls autoplay>
+                <source src="video_baru.mp4" type="video/mp4">
+            </video>
+        </div>
+        <font color="ff00ff" size="10" face="impact">test tag font</font>
+        <span style="text-align: center;">
+            <p>test inline <span style="color: red;">skdjakjkasd </h1></span></p>
+        </span>
+        <div style="justify-items: center;">
+            <h2>test element block</h2>
+            <p>dari mana asal muasal spon tersebut?</p>
+            <h1>sadjadjh</h1>
+        </div>
+        <form action="">
+            <input type="submit" name="submit" value="kirim data">
+        </form>
+        <table>
+            <tr>
+                <td><input type="radio" name="gender" value="pria"> Pria</td>
+                <td><input type="radio" name="gender" value="pria"> Perempuan</td>
+            </tr>
+        </table>
+        <form action="">
+            <p> suka apa mas?
+                <select name="suka apa mas?" id="">
+                    <option value="pilhh">makan</option>
+                    <option value="pilhh">maen</option>
+                    <option value="pilhh">ngoding lah</option>
+                </select>
+            </p>
+            <div style="display: block;">
+                <label>setuju jika bapak hajat namanya Von Doom?</label><br>
+                <input type="checkbox">Setuju, karena dia bakal buat tatanan semesta baru</input><br>
+                <input type="checkbox">Setuju, karena dia adalah seorang jenius</input>
+            </div>
+        </form>
+        <textarea name="whatcohobi" id="" placeholder="Komen disini"></textarea><br>
+        <input type="reset">
+        <article border="1" style="background-color: lightgrey; padding: 10px; margin-top: 10px;">
+            <h4>Berita hari ini tentang bapak hajat pergi ke warung bawa Infinity Stone</h4>
+            <p>sahabat semua, ini akan menjadi ancaman semesta karena kemarin bapak hajat sudah membawa Inffinity stone menggunakan tangan menuju ke warung</p>
+            <p>berpotensi akan ada gerhana merah di ufuk timur. efeknya akan membelah rusia dan china secara geografis</p>
+        </article>
+        <section>
+            <h3>Dalam satu malam, bapak hajat membuat 1 semesta yang bernama battle world</h3>
+            <p>semesta ini berisi gabungan dari berbagai semesta yang sudah hancur</p>
+            <p>ada asgard, latveria, wakanda, xandar, dan lain lain</p>
+            <p>semesta ini dipimpin oleh bapak hajat yang bergelar doom</p>
+            <p>dia adalah seorang jenius, billionaire, playboy
+        </section>
+        <section>
+            <h5>Sangat disayangkan, kerusakan ini tak terhentikan</h5>
+            <p>kita akan selalu kalah karena bapak hajat terus digantikan oleh setiap versi dirinya di multisemesta</p>
+        </section>
+        <aside>
+            <h4>Catatan Kaki</h4>
+            <p>ini adalah catatan kaki dari artikel diatas</p>
+            <p>semoga bermanfaat</p>
+        </aside>
+        <main>
+            <h3>Konten utama dari bapak hajat</h3>
+            <p>entah kenapa bapak hajat dulunya sering menyelamatkan bumi sekecil apapun<br>dia suka sekali pamer kehebatannya bersama teman-temannya</p>
+        </main>
+        <figure>
+            <img src="bapak hajat.jpg" alt="bapak hajat" style="width:200px; margin-bottom: 1rem;">
+            <figcaption>Bapak Hajat</figcaption>
+        </figure>
+        <footer style="background-color: orange; width: 100%; height: 100px; padding: 10px; margin-top: 10px;">
+            <p>Salinkanan © 2025-2099 StarkIndustries, inc. - All Rights Reserved</p>
+            <p>Made with &hearts; by Tyo</p>
+        </footer>
+    </body>
+    </html>

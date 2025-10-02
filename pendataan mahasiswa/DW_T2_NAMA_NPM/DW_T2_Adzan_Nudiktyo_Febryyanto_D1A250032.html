@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Form Pendataan</title>
+    </head>
+    <style>
+        :root{
+            --gap: 10px;
+        }
+        body {
+            display: flex;
+            margin: 0;
+            font-family: Helvetica;
+            justify-content: center;
+            padding: 24px
+        }
+        .kontener{
+
+            width: 100%;
+            max-width: 900px;
+            padding: 20px 24px;
+            /* box-shadow: 0 3px 3px; */
+            /* justify-content: center; */
+        }
+        .form-row{
+            display: grid;
+            grid-template-columns: 1fr auto 2fr;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            position:  relative;
+            /* box-shadow: 0 3px 3px; */
+        }
+        .form-row label{
+            text-align: left;
+            font-weight: 600;
+        }
+        .colon{
+            text-align: center;
+            font-weight: 700;
+            /* box-shadow: 0 3px 3px; */
+        }
+        .coma{
+            align-self: end;
+            font-size: 20px;
+            /* font-weight: bold; */
+            margin-right: 5px;
+        }
+        .ttlg{
+            display: flex;
+            gap: 5px; 
+            align-items: center;
+        }
+        .ttlg input:first-child{flex: 1;}
+        .ttlg .coma{flex: 0 0 auto; }
+        .ttlg input:last-child{flex: 2;}
+
+        input[type="text"],
+        input[type="password"],
+        input[type="date"],
+        select, textarea{
+            /* width: 100%; */
+            text-align: left;
+            padding: 8px;
+        }
+        .inline-group{
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 3px;
+            padding: 8px;
+        }
+        .actions{
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+
+        }
+        .btn {
+            background-color: #aaa;
+            border: 2px solid black;
+            padding: 5px 13px;
+            font-size: 14px;
+            cursor: pointer;
+            box-shadow: 5px 5px 5px #888;
+            margin: 10px;
+        }
+        .pesanerror{
+            grid-column: 1 / -1;
+            display: none;
+            color: red;
+            font-size: 12px;
+            margin-top: 4px;
+            /* box-shadow: 0px 3px 3px; */
+        }
+        .form-row.error .pesanerror{
+            display: grid;
+            text-align: left;
+            grid-template-columns: 1fr auto;
+            /* box-shadow: 0px 3px 3px; */
+        }
+        @media (max-width:600px){
+            .form-row{
+                grid-template-columns: 1fr;
+                gap: 8px;
+                align-items: start;
+                /* box-shadow: 0 3px 3px; */
+            }
+            .colon {display: none;}
+            .form-row label::after{content: ":";margin: 4px}
+            .inline-group{justify-content: flex-start;}
+            }
+    </style>
+    <body>
+        <main class="kontener">
+            <header style="text-align: center;">
+                <h2>FORM PENDATAAN MAHASISWA SISTEM INFORMASI</h2>
+            </header>
+            <div style="text-align: center; margin-bottom: 50px; margin-top: 50px;">
+                <img src="Logo universitas.png" alt="Unsublogo" width="100" height="100">
+            </div>
+            <form autocomplete="on" style="display: block;" id="fom">
+                <div class="form-row">
+                    <label for="">Nomor Pokok Mahasiswa</label>
+                    <div class="colon">:</div>
+                    <input type="text" name="npm" placeholder="Contoh: D1A250011" required></input>
+                </div>
+                <div class="form-row">
+                    <label for="">Nama Lengkap</label>
+                    <div class="colon">:</div>
+                    <input type="text" name="nama" placeholder="Contoh: Budi Siregar" required></input>
+                </div>
+                <div class="form-row">
+                    <label for="">Alamat</label>
+                    <div class="colon">:</div>
+                    <input type="text" name="adr" placeholder="Contoh: Jl.WrSupratman No.20 block B" required></input>
+                </div>
+                <div class="form-row">
+                    <label for="">Tempat, Tanggal Lahir</label>
+                    <div class="colon">:</div>
+                    <div class="ttlg">
+                        <input type="text" name="tempat" placeholder="Kota" style="max-width: 100px;;">
+                        <div class="coma">,</div>
+                        <input type="date" name="tanggal">
+                    </div>
+                </div>
+                <div class="form-row" id="password-row">
+                    <label for="">Password</label>
+                    <div class="colon">:</div>
+                    <input type="password" name="pass" id="pa" placeholder="Saran: karakter yang sama tidak boleh 3 kali Contoh: rrroph (r-nya 3x)" required></input>
+                    <div id="pass-error" class="pesanerror"></div>
+                </div>
+                <div class="form-row" id="repass-row">
+                    <label for="">Retype Password</label>
+                    <div class="colon">:</div>
+                        <input type="password" name="repass" id="repa" placeholder="Konfirmasi password" required>
+                        <div id="repass-error" class="pesanerror"></div>
+                </div>
+                <div class="form-row">
+                    <label for="">Jenis Kelamin</label>
+                    <div class="colon">:</div>
+                    <div class="inline-group">
+                        <input type="radio" name="jk" value="Laki-laki">Laki-laki</input>
+                        <input type="radio" name="jk" value="Perempuan">Perempuan</input>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <label for="">Hobby</label>
+                    <div class="colon">:</div>
+                    <div class="inline-group">
+                        <input type="checkbox" name="hb" value="Membaca">Membaca</input>
+                        <input type="checkbox" name="hb" value="Memancing">Memancing</input>
+                        <input type="checkbox" name="hb" value="Lain-lain">Lain-lain</input>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <label for="">Tingkat Pendidikan</label>
+                    <div class="colon">:</div>
+                        <select name="pendidikan" style="text-align: center;">
+                            <option value="pilih">-- Pilih Tingkat Pendidikan --</option>
+                            <option value="sma">SMA</option>
+                            <option value="smk">SMK</option>
+                            <option value="d3">D3</option>
+                            <option value="s1">S1</option>
+                        </select>
+                </div>
+                <div class="form-row">
+                    <label for="">Komentar</label>
+                    <div class="colon">:</div>
+                    <textarea name="komen" id="" placeholder="komen di sini"></textarea>
+                </div>
+                <div class="actions">
+                    <input class="btn" type="reset">
+                    <button class="btn" onclick="goToPage()">Kirim</button>
+                    <!-- <button onclick="playSound()" type="submit">Kirim</button>
+                    <button onclick="playSound()" type="submit">Kirim</button>
+                    <button onclick="playSound()" type="submit">Kirim</button>
+                    <button onclick="playSound()" type="reset">Reset</button>
+                    <button onclick="playSound()" type="reset">Reset</button>
+                    <button onclick="playSound()" type="reset">Reset</button> -->
+                </div>
+            </form>
+        </main>
+        <script>
+            let passInput = document.getElementById("pa");
+            let repassInput = document.getElementById("repa");
+            let passError = document.getElementById("pass-error");
+            let repassError = document.getElementById("repass-error");
+            let passwordRow = document.getElementById("password-row");
+            let repassRow = document.getElementById("repass-row");
+
+            function validatePassword() {
+                let pass = passInput.value;
+                let errorMessages = [];
+
+                // Validasi 1: Karakter yang sama muncul 3 kali atau lebih (tidak harus berderet)
+                if (pass.length > 0) {
+                    let charCount = {};
+                    for (let char of pass) {
+                        charCount[char] = (charCount[char] || 0) + 1;
+                    }
+                    let hasRepeatedChar = Object.values(charCount).some(count => count >= 3);
+                    if (hasRepeatedChar) {
+                        errorMessages.push("Password tidak boleh mengandung karakter yang sama 3 kali atau lebih");
+                    }
+                }
+
+                // Validasi 2: Minimal 8 karakter (peringatan jika kurang dari 8, boleh lebih)
+                if (pass.length < 8 && pass.length > 0) { // Hanya peringati jika sudah ada input tapi kurang
+                    errorMessages.push("Password harus minimal 8 karakter");
+                }
+
+                // Tampilkan pesan error jika ada
+                if (errorMessages.length > 0) {
+                    passError.innerHTML = errorMessages.join("<br>");
+                    passwordRow.classList.add("error");
+                } else {
+                    passError.innerHTML = "";
+                    passwordRow.classList.remove("error");
+                }
+            }
+
+            function validateRepass() {
+                let pass = passInput.value;
+                let repass = repassInput.value;
+                
+                if (repass === "") {
+                    repassRow.classList.remove("error");
+                    repassError.textContent = ""; // Kosongkan pesan jika repass kosong
+                    return; // Jika kosong, abaikan
+                }
+                
+                if (pass !== repass) {
+                    repassError.textContent = "Konfirmasi password tidak sesuai";
+                    repassRow.classList.add("error");
+                } else {
+                    repassError.textContent = "";
+                    repassRow.classList.remove("error");
+                }
+            }
+
+            // Validasi realtime saat input berubah
+            passInput.addEventListener("input", () => {
+                validatePassword();
+                validateRepass(); // Jika password berubah, validasi ulang repass
+            });
+
+            repassInput.addEventListener("input", validateRepass);
+
+            // Validasi saat form disubmit
+            document.getElementById("fom").addEventListener("submit", function(e) {
+                e.preventDefault();
+                
+                // Jalankan validasi
+                validatePassword();
+                validateRepass();
+                
+                // Cek apakah ada error dan form valid secara keseluruhan
+                let isPasswordValid = !passwordRow.classList.contains("error");
+                let isRepassValid = !repassRow.classList.contains("error");
+                
+                if (isPasswordValid && isRepassValid && this.checkValidity()) {
+                    // Jika semua valid, redirect (atau simpan data, dll.)
+                    location.href = "dummy.html"; // Ganti dengan halaman tujuan sebenarnya
+                } else {
+                    // Jika ada error, tampilkan alert umum (opsional, untuk menekankan)
+                    if (!isPasswordValid || !isRepassValid) {
+                    }
+                }
+            });
+
+            // Fungsi goToPage() jika masih diperlukan (sekarang tidak, karena pakai submit)
+            function goToPage() {
+                document.getElementById("fom").dispatchEvent(new Event("submit"));
+            }
+
+            // Navigasi Form dengan Enter Key (dari atas ke bawah)
+            function setupEnterNavigation() {
+                const form = document.getElementById("fom");
+                // Daftar elemen yang bisa difokus dan navigasi dengan Enter
+                // Fokus pada input text, password, date, select, textarea
+                // Radio/checkbox: Enter akan toggle (default behavior), tapi tidak navigasi otomatis
+                const navigableElements = form.querySelectorAll('input[type="text"], input[type="password"], input[type="date"], select, textarea');
+                
+                navigableElements.forEach((element, index) => {
+                    element.addEventListener('keydown', function(event) {
+                        if (event.key === 'Enter') {
+                            event.preventDefault(); // Cegah submit form atau default behavior
+                            
+                            // Untuk textarea, Enter biasanya untuk newline, jadi skip navigasi di textarea
+                            if (element.tagName === 'TEXTAREA') {
+                                return; // Biarkan Enter buat newline di textarea
+                            }
+                            
+                            // Pindah ke elemen berikutnya
+                            const nextIndex = index + 1;
+                            if (nextIndex < navigableElements.length) {
+                                const nextElement = navigableElements[nextIndex];
+                                nextElement.focus();
+                                // Jika select, buka dropdown jika possible
+                                if (nextElement.tagName === 'SELECT') {
+                                    nextElement.size = 1; // Pastikan tidak expanded
+                                }
+                            } else {
+                                // Jika sudah di elemen terakhir, fokus ke button submit
+                                const submitBtn = form.querySelector('button[type="submit"]');
+                                if (submitBtn) {
+                                    submitBtn.focus();
+                                }
+                            }
+                        }
+                    });
+                });
+
+                // Handle radio dan checkbox: Enter toggle pilihan (default), tapi navigasi ke next group
+                const radioGroups = form.querySelectorAll('input[type="radio"]');
+                const checkboxGroups = form.querySelectorAll('input[type="checkbox"]');
+                
+                [...radioGroups, ...checkboxGroups].forEach((input) => {
+                    input.addEventListener('keydown', function(event) {
+                        if (event.key === 'Enter') {
+                            event.preventDefault();
+                            this.click(); // Toggle pilihan
+                            
+                            // Setelah toggle, fokus ke elemen navigable berikutnya (jika ada)
+                            const currentRow = this.closest('.form-row');
+                            const nextRow = currentRow.nextElementSibling;
+                            if (nextRow) {
+                                const nextNavigable = nextRow.querySelector('input[type="text"], input[type="password"], input[type="date"], select, textarea');
+                                if (nextNavigable) {
+                                    nextNavigable.focus();
+                                }
+                            }
+                        }
+                    });
+                });
+            }
+
+            // Inisialisasi navigasi saat DOM loaded
+            document.addEventListener('DOMContentLoaded', setupEnterNavigation);
+        </script>
+    </body>
+</html>

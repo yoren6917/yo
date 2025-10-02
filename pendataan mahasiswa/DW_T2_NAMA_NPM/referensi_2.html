@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Form Pendataan Mahasiswa — Responsif</title>
+  <style>
+    :root{
+      --label-width: 200px; /* lebar kolom label pada layar besar */
+      --gap: 10px;
+      --radius: 8px;
+      --max-width: 900px;
+      --bg:#f7f9fc;
+      --card:#ffffff;
+      --accent:#0b74de;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:var(--bg);
+      color:#111;
+      line-height:1.3;
+      padding:24px;
+      display:flex;
+      justify-content:center;
+    }
+
+    .container{
+      width:100%;
+      max-width:var(--max-width);
+      background:var(--card);
+      border-radius:12px;
+      padding:20px 24px;
+      box-shadow:0 6px 20px rgba(12,30,60,0.08);
+    }
+
+    h1{ text-align:center; margin-top:0; margin-bottom:18px; font-size:1.25rem }
+    form{ display:block }
+
+    /* Setiap baris form sebagai grid tiga kolom: label | titik dua | input */
+    .form-row{
+      display:grid;
+      grid-template-columns: var(--label-width) 18px 1fr;
+      gap:var(--gap);
+      align-items:center;
+      margin-bottom:12px;
+    }
+
+    /* Label berada di kolom pertama dan rata kanan agar teks dekat dengan titik dua */
+    .form-row label{
+      justify-self:end;
+      padding-right:6px;
+      font-weight:600;
+    }
+
+    /* Kolom titik dua, sejajar dan selalu lebar tetap */
+    .colon{
+      justify-self:center;
+      user-select:none;
+      font-weight:700;
+    }
+
+    /* Input dan textarea mengisi kolom terakhir */
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="date"],
+    select,
+    textarea{
+      width:100%;
+      padding:8px 10px;
+      border:1px solid #d6dbe6;
+      border-radius:6px;
+      font-size:0.95rem;
+      background:white;
+    }
+
+    textarea{ min-height:84px; resize:vertical }
+
+    /* Kontrol untuk radio/checkbox (posisi di kolom input) */
+    .inline-group{ display:flex; gap:12px; align-items:center }
+
+    /* Tombol submit */
+    .actions{
+      display:flex;
+      justify-content:center;
+      margin-top:18px;
+    }
+    button{
+      background:var(--accent);
+      color:white;
+      border:none;
+      padding:10px 16px;
+      border-radius:8px;
+      font-weight:600;
+      cursor:pointer;
+    }
+
+    /* Responsif: pada layar kecil, ubah grid menjadi satu kolom.
+       Titik dua disembunyikan dan digantikan oleh ':' setelah label agar tetap terlihat.
+       Input akan berada di bawah label sehingga lebih nyaman untuk layar sempit. */
+    @media (max-width:600px){
+      .form-row{
+        grid-template-columns: 1fr; /* satu kolom */
+        gap:8px;
+        align-items:start;
+      }
+      .form-row label{
+        justify-self:start;
+        padding-right:0;
+      }
+      /* sembunyikan kolom titik dua pada layar kecil */
+      .colon{ display:none }
+      /* tambahkan titik dua setelah label (agar pengguna melihat format label:) */
+      .form-row label::after{
+        content: ":";
+        margin-left:6px;
+      }
+    }
+
+    /* Untuk layar sangat lebar atur label lebih besar */
+    @media (min-width:1100px){
+      :root{ --label-width:260px }
+    }
+
+    /* sedikit aksesibilitas visual fokus */
+    input:focus, select:focus, textarea:focus { outline:3px solid rgba(11,116,222,0.12) }
+
+  </style>
+</head>
+<body>
+  <main class="container" role="main">
+    <h1>Form Pendataan Mahasiswa</h1>
+
+    <form id="mahasiswaForm" autocomplete="on">
+
+      <div class="form-row">
+        <label for="nim">NIM</label>
+        <div class="colon">:</div>
+        <input id="nim" name="nim" type="text" inputmode="numeric" placeholder="contoh: 210123456" required />
+      </div>
+
+      <div class="form-row">
+        <label for="nama">Nama Lengkap</label>
+        <div class="colon">:</div>
+        <input id="nama" name="nama" type="text" placeholder="Nama mahasiswa" required />
+      </div>
+
+      <div class="form-row">
+        <label for="prodi">Program Studi</label>
+        <div class="colon">:</div>
+        <select id="prodi" name="prodi" required>
+          <option value="">-- Pilih program studi --</option>
+          <option value="ti">Teknik Informatika</option>
+          <option value="si">Sistem Informasi</option>
+          <option value="ek">Ekonomi</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label>Jenis Kelamin</label>
+        <div class="colon">:</div>
+        <div class="inline-group">
+          <label><input type="radio" name="jk" value="L" required /> Laki-laki</label>
+          <label><input type="radio" name="jk" value="P" /> Perempuan</label>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="tgl">Tanggal Lahir</label>
+        <div class="colon">:</div>
+        <input id="tgl" name="tgl_lahir" type="date" />
+      </div>
+
+      <div class="form-row">
+        <label for="email">Email</label>
+        <div class="colon">:</div>
+        <input id="email" name="email" type="email" placeholder="nama@domain.com" />
+      </div>
+
+      <div class="form-row">
+        <label for="telp">Telepon</label>
+        <div class="colon">:</div>
+        <input id="telp" name="telepon" type="tel" placeholder="08xx..." />
+      </div>
+
+      <div class="form-row">
+        <label for="alamat">Alamat</label>
+        <div class="colon">:</div>
+        <textarea id="alamat" name="alamat" placeholder="Alamat lengkap"></textarea>
+      </div>
+
+      <div class="actions">
+        <button type="submit">Simpan Data</button>
+      </div>
+
+    </form>
+  </main>
+
+  <script>
+    // Contoh: tangani submit secara sederhana (tidak mengirim ke server di contoh ini)
+    document.getElementById('mahasiswaForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const data = new FormData(this);
+      const obj = Object.fromEntries(data.entries());
+      // Jika ada pilihan radio, FormData hanya menyertakan yang terpilih
+      alert('Data siap disimpan:\n' + JSON.stringify(obj, null, 2));
+    });
+  </script>
+</body>
+</html>
